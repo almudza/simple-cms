@@ -114,7 +114,7 @@
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Bootstrap WYSIHTML5
+              <h3 class="box-title">Body
                 <small>Simple and fast</small>
               </h3>
               <!-- tools box -->
@@ -155,5 +155,22 @@
         $(".textarea").WYSIHTML5();
 
     });
+
+
+          $('#title').on('keyup', function() {
+
+          var theTitle = this.value.toLowerCase().trim(),
+          slugInput = $('#slug'),
+          theSlug = theTitle.replace(/&/g, '-and-')
+                 .replace(/[^a-z0-9-]+/g, '-')
+                 .replace(/\-\-+/g, '-')
+                 .replace(/^-+|-+$/g, '');
+
+
+
+          slugInput.val(theSlug);
+
+
+      });
   </script>
 @endsection

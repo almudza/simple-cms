@@ -24,10 +24,10 @@
 					                  <label for="Name">Name</label>
 					                  <input type="text" class="form-control" name="name" id="Name" value="{{ $tag->name }}">
 				                </div>
-				                <div class="form-group">
+				               {{--  <div class="form-group">
 				                  <label for="slug">Slug</label>
 				                  <input type="text" class="form-control" name="slug" id="slug" value="{{ $tag->slug }}">
-				                </div>
+				                </div> --}}
 				          </div> <!-- box -->
 				          <div class="box-footer">
 				          	<a href="{{ route('tag.index') }}" class="btn btn-warning">Back</a>

@@ -39,14 +39,14 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required',
-            'slug' => 'required'
+            'name' => 'required|unique:tags,name',
+            // 'slug' => 'required'
         ]);
 
         $tag = new Tag;
 
         $tag->name = $request->name;
-        $tag->slug = $request->slug;
+        $tag->slug = str_slug($request->name);
         $tag->save();
 
         Session::flash('success', 'Tag berhasil di Tambahkan');
@@ -88,14 +88,14 @@ class TagController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'name' => 'required',
-            'slug' => 'required'
+            'name' => 'required|unique:tags,name',
+            // 'slug' => 'required'
         ]);
 
         $tag = Tag::find($id);
 
         $tag->name = $request->name;
-        $tag->slug = $request->slug;
+        $tag->slug = str_slug($request->name);
         $tag->save();
 
         // Session::flash('success', 'Tag berhasil di Tambahkan');

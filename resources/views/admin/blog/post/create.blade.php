@@ -5,6 +5,11 @@
  {{-- Optional CSS --}}
 @section('css')
 <link rel="stylesheet" href="{{ asset('admin/bower_components/select2/dist/css/select2.min.css')}}">
+
+
+{{-- ckeditor --}}
+<script src="//cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script>
+
 @endsection
 
 
@@ -12,6 +17,7 @@
 
 {{-- include Error Message --}}
 @include('admin.partials._error')
+
 
 <!-- form start -->
 <form role="form" action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
@@ -91,7 +97,7 @@
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Bootstrap WYSIHTML5
+              <h3 class="box-title">Body
                 <small>Simple and fast</small>
               </h3>
               <!-- tools box -->
@@ -104,7 +110,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body pad">
-                <textarea id="editor1" name="body" placeholder="Place some text here"
+                <textarea id="editor1"  name="body"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
             </div>
           </div>
@@ -121,19 +127,34 @@
 @section('javascript')
 	<script src="{{ asset('admin/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
 
-	<script>
-		$(function(){
-		    //Initialize Select2 Elements
-		    $('.select2').select2()
-
-		})
-
+  <script>
+    $(function(){
+        //Initialize Select2 Elements
+        $('.select2').select2(); 
 
 
         CKEDITOR.replace('editor1');
 
         $(".textarea").WYSIHTML5();
 
+    });
 
-	</script>
+
+          $('#title').on('keyup', function() {
+
+          var theTitle = this.value.toLowerCase().trim(),
+          slugInput = $('#slug'),
+          theSlug = theTitle.replace(/&/g, '-and-')
+                 .replace(/[^a-z0-9-]+/g, '-')
+                 .replace(/\-\-+/g, '-')
+                 .replace(/^-+|-+$/g, '');
+
+
+
+          slugInput.val(theSlug);
+
+
+      });
+  </script>
+
 @endsection

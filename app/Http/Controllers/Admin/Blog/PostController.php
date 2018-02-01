@@ -78,7 +78,7 @@ class PostController extends Controller
 
         $validator = Validator::make($request->all(),[
             'title' => 'required|max:225',
-            'slug' => 'required',
+            'slug' => 'required|alpha_dash|min:5|max:225|unique:posts,slug',
             'image' => 'required|image',
             'body' => 'required',
             // 'category_id' => 'required',
@@ -165,13 +165,30 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'title' => 'required',
-            'slug' => 'required',
-            'body' => 'required',
-            // 'category_id' => 'required',
-            'tags' => 'required'
-        ]);
+
+        // Validati data 
+        $post = Post::find($id);
+
+        if ($request->input('slug') == $post->slug) {
+            
+            $this->validate($request,[
+                'title' => 'required',
+                
+                'body' => 'required',
+                // 'category_id' => 'required',
+                'tags' => 'required'
+            ]);
+        } else {
+            
+            $this->validate($request,[
+                'title' => 'required',
+                'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
+                'body' => 'required',
+                // 'category_id' => 'required',
+                'tags' => 'required'
+            ]);
+        }
+
 
         $post = Post::find($id);
 

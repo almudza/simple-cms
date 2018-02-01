@@ -49,3 +49,10 @@
 
           <!-- endcontent -->
 @endsection
+
+
+@section('js')
+
+
+
+@endsection

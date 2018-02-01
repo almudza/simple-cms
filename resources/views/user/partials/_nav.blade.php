@@ -15,7 +15,7 @@
               <li class="nav-item dropdown">
                 <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">Android</a>
                 <div class="dropdown-menu">
-                  <a href="" class="dropdown-item">Custom</a>
+                  <a href="{{ url('/custom') }}" class="dropdown-item">Custom</a>
                   <a href="" class="dropdown-item">Root</a>
                 </div>
               </li>

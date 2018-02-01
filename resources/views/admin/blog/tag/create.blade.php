@@ -25,10 +25,10 @@
 					                  <label for="name">Title</label>
 					                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter Tag name" autocomplete="off">
 				                </div>
-				                <div class="form-group">
+				          {{--       <div class="form-group">
 				                  <label for="slug">Slug</label>
 				                  <input type="text" class="form-control" id="slug" name="slug" placeholder="slug">
-				                </div>
+				                </div> --}}
 				          </div> <!-- box -->
 				          <div class="form-group">
 				          	<a href="{{ route('tag.index') }}" class="btn btn-warning">Back</a>
