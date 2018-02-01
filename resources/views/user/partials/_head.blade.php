@@ -12,4 +12,4 @@
 
     @yield('css')
 
-    <title>Devmus Site</title>
+    <title>Devmus | @yield('title')</title>

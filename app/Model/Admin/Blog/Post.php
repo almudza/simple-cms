@@ -42,4 +42,12 @@ class Post extends Model
     {
     	return $this->belongsToMany('App\Model\Admin\Blog\Tag','post_tags','post_id','tag_id')->withTimestamps();
     }
+
+
+
+    // view slug post detail
+  /*  public function getRouteKeyName()
+    {
+        return 'slug';
+    }*/
 }

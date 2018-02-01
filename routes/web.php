@@ -4,7 +4,10 @@
 Route::namespace('User')->group(function(){
 
 	Route::get('/', 'HomeController@index');
-	Route::get('/post', 'BlogController@post');
+
+	Route::get('/blog', 'BlogController@list')->name('blog');
+	
+	Route::get('/{slug}', 'BlogController@post')->name('post');
 
 
 });
