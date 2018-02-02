@@ -5,9 +5,13 @@
 @include('user.partials._header')
 @endsection
 
+@section('title', ' | blog')
 
 
 @section('content')
+
+      @if ($posts->count() > 0)
+
           @foreach ($posts as $post)
 
             <div id="post-list">
@@ -24,6 +28,9 @@
 <!-- paginate -->
           {{ $posts->links() }}
 <!-- endpaginate -->
+      @else
+        <h1> {{ $zero }} </h1>
+      @endif
 
 @endsection
 

@@ -7,12 +7,12 @@
 
 
 
-@section('title', $post->title)
+@section('title', ' | '. $post->title)
 
 @section('content')
 
             <div id="post-detail">
-                <img src="{{ $post->image }} " width="100%" alt="" class="card-img-top">
+                <img src="{{ $post->getImage() }} " width="100%" alt="" class="card-img-top">
                 <div class="card-body">
                     <h3 class="text-center" > {{ $post->title }} </h3>
                     <small>by <i class="fa fa-user"></i> <a href="#">Mudza</a> <b>{{ $post->created_at->diffForHumans() }}</b> </small>
@@ -35,6 +35,6 @@
 
 @section('js')
 
-    <script src="{{ asset('user/js/prism.js') }}">
+    <script src="{{ asset('user/js/prism.js') }}"></script>
     
-</script>
+@endsection

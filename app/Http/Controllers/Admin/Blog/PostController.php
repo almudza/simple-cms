@@ -103,7 +103,7 @@ class PostController extends Controller
         // $saveImage = $image->storeAs('media', $image_new_name);
         
 
-        $saveImage = $image->store('media');
+        $saveImage = $image->store('thumbnail');
 
 
 
@@ -214,7 +214,7 @@ class PostController extends Controller
        // jika ada file baru simpan ke database dan storage
         if ($image) {
             
-            $saveImage = $image->store('media');
+            $saveImage = $image->store('thumbnail');
             
             $post->image = $saveImage;
         

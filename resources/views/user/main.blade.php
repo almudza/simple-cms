@@ -22,7 +22,7 @@
       </section>
 
       <section id="content">
-        <div class="row mt-sm-4 mt-md-0">
+        <div class="row mt-sm-4 mt-md-4">
           <!--  main content  -->
           <div class="col-sm-12 col-md-8 text-sm-center text-md-left">
 			@yield('content')
@@ -59,9 +59,6 @@
 	@include('user.partials._js')
 
 
-
-	{{-- Section Smoothing Js --}}
-	@yield('js')
 
   </body>
 </html>

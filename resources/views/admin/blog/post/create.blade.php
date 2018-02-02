@@ -29,11 +29,11 @@
 		              <div class="box-body">
 			                <div class="form-group">
 			                  <label for="title">Title</label>
-			                  <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title">
+			                  <input type="text" name="title" value="{{ old('title') }}" class="form-control" id="title" placeholder="Enter Title">
 			                </div>
 			                <div class="form-group">
 			                  <label for="slug">Slug</label>
-			                  <input type="text" name="slug" class="form-control" id="slug" placeholder="slug">
+			                  <input type="text" name="slug" value="{{ old('slug') }}" class="form-control" id="slug" placeholder="slug">
 			                </div>
 
 			              <div class="form-group">
@@ -107,7 +107,7 @@
             <!-- /.box-header -->
             <div class="box-body pad">
                 <textarea id="editor1"  name="body"
-                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ old('body') }}</textarea>
             </div>
           </div>
         </div>

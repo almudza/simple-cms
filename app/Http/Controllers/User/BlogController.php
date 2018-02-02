@@ -14,7 +14,7 @@ class BlogController extends Controller
 	// Blog list 
 	public function list()
 	{
-		$posts = Post::orderBy('id','desc')->where('status', 1)->paginate(2);
+		$posts = Post::orderBy('id','desc')->where('status', 1)->paginate(5);
 		/*
 		$category = Category::find('posts');
 
