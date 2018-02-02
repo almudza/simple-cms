@@ -20,7 +20,9 @@ class BlogController extends Controller
 
         $tags = Tag::find('posts');*/
 
-		return view('user.blog.list',compact('posts'/*,'category', 'tags'*/));
+        $zero = 'Post Not Yet';
+
+		return view('user.blog.list',compact('posts' ,'zero'/*,'category', 'tags'*/));
 
 	}
 

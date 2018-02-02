@@ -26,17 +26,6 @@ class PostController extends Controller
 
         $tags = Tag::find('posts');
 
-        // if ( isset($category)== 0) {
-            
-        //     $category = null;
-
-        // } elseif ($tags->count() == 0) {
-
-        //     return $tags = 'kosong';
-            
-        // }
-
-
 
         return view('admin.blog.post.index', compact('posts','category','tags'));
     }
@@ -307,7 +296,6 @@ class PostController extends Controller
     public function deleteThumb(Request $request, $id)
     {
 
-        // return 'yes';
         $post = Post::find($id);
         // post dengan gambar
         $postImage = $post->image;
@@ -316,24 +304,7 @@ class PostController extends Controller
 
         $post->image = null;
         $post->save();
-        // dd($postImage);
-
-        // tmpung gmbr baru
-        // $image = $request->file('image');
-
-        // jika ada file request baru mk hapus yg lama
-        // if ($image) {
-
-        //     // delete file
-        //     // dd($postImage);
-            
-        //     Storage::delete($postImage);
-        // }
-
-        // $request->post->update([
-        //     'image' => null
-        // ]);
-
+   
         return redirect()->back();
 
     }

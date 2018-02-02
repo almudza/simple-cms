@@ -26,7 +26,7 @@
 
     <div class="box box-default">
         <div class="box-header text-center with-border">
-          <h3 class="box-title">Post Edit : {{ str_limit($post->title, 10) }} </h3>
+              <h3 class="box-title">Post Edit : {{ str_limit($post->title, 10) }} </h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -41,7 +41,6 @@
                         <label for="slug">Slug</label>
                         <input type="text" name="slug" class="form-control" id="slug" value="{{ $post->slug }}">
                       </div>
-
                     <div class="form-group">
                         <label for="category">Category</label>
                         <select id="category" class="form-control select2" style="width: 100%;" name="category_id">
@@ -82,37 +81,37 @@
               </div>
               <!-- /.col -->
               <div class="col-md-6">
-              <div class="form-group">
-                <label for="image">Image</label>
-                  <img src="{{ $post->getAdminImage() }}" width="100" alt="">
-                  <br><br>
+                <div class="form-group">
+                  <label for="image">Image</label>
 
-                  @if (isset($post->image))
-                    <a href="" class="btn btn-xs btn-danger" onclick="event.preventDefault();
-                          document.getElementById('remove-thumb').submit();" >Delete</a>
-                  @endif
+                    <div class="parent">
+                      <div class="child">
+                        <img src="{{ $post->getAdminImage() }}" width="50%" alt="">
+                      </div>
+                    </div>
+                    <br><br>
 
-                  <input type="file" name="image" id="image" accept="image/*">
-
-                  
-              </div>
-                  <div class="checkbox">
+                    @if (!isset($post->image))
+                      <input type="file" name="image" id="image" accept="image/*">
+                    @endif     
+                </div>
+                <div class="checkbox">
                   <label>
                     <input value="1" @if ($post->status == 1) checked @endif name="status" type="checkbox">Publish
                   </label>
-            </div>
+                </div>
               </div>
               <!-- /.col -->
           </div>
           <!-- /.row -->
-      <div class="box-footer">
-        <div class="form-group pull-right">
-          <a href="{{ route('post.index') }}" class="btn btn-warning">Back</a>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <div class="box-footer">
+            <div class="form-group pull-right">
+              <a href="{{ route('post.index') }}" class="btn btn-warning">Back</a>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
         </div>
-        </div>
-        </div>
-        <!-- /.box-body -->
+          <!-- /.box-body -->
     </div>
       <!-- /.box -->
 
@@ -146,6 +145,7 @@
     </div>
       <!-- ./row -->
 </form>
+
 {{-- form delete thumb --}}
 <form action="{{ route('deletethumb',$post->id) }}" id="remove-thumb" method="post" style="display: none;">
   {{ csrf_field() }}
@@ -160,6 +160,27 @@
 {{-- Optional JavaScript --}}
 @section('javascript')
   <script src="{{ asset('admin/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
+
+<script>
+  $(document).ready(function(){
+
+      var a = 1;
+      $(".child").draggable({
+        containment: "parent",
+        start: function(event, ui) { $(this).css("z-index", a++); }
+      }).hover(function(){
+        $(this).prepend('<button class="remove btn btn-xs btn-danger">x</button>');
+      }, function(){
+        $(this).find('.remove').remove();
+      }).on('click', '.remove', function(event){
+        $(this).closest('.child').remove();
+        event.preventDefault();
+        $('#remove-thumb').submit();
+      });
+
+  });
+</script>
+
 
   <script>
     $(function(){
