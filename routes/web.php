@@ -36,6 +36,7 @@ Route::group(['middelware'=> ['web']], function() {
 			/*Post Prefix Route*/
 			Route::prefix('post')->group(function(){
 
+
 				// permanent delete
 				Route::get('/kill/{id}','PostController@kill')->name('post.kill');
 				// showTrash
@@ -51,8 +52,11 @@ Route::group(['middelware'=> ['web']], function() {
 					'as' => 'post.update'
 				]);
 
+
 				// edit 
 				Route::get('/edit/{id}','PostController@edit')->name('post.edit');
+				// delete thumbnail post 
+				Route::delete('/edit/{id}','PostController@deleteThumb')->name('deletethumb');
 
 				Route::post('/create','PostController@store')->name('post.store');
 				Route::get('/create', 'PostController@create')->name('post.create');

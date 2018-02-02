@@ -303,5 +303,42 @@ class PostController extends Controller
 
 
 
+    // Delete Thumbnail post edit 
+    public function deleteThumb(Request $request, $id)
+    {
+
+        // return 'yes';
+        $post = Post::find($id);
+        // post dengan gambar
+        $postImage = $post->image;
+
+        Storage::delete($postImage);
+
+        $post->image = null;
+        $post->save();
+        // dd($postImage);
+
+        // tmpung gmbr baru
+        // $image = $request->file('image');
+
+        // jika ada file request baru mk hapus yg lama
+        // if ($image) {
+
+        //     // delete file
+        //     // dd($postImage);
+            
+        //     Storage::delete($postImage);
+        // }
+
+        // $request->post->update([
+        //     'image' => null
+        // ]);
+
+        return redirect()->back();
+
+    }
+
+
+
 
 }

@@ -13,12 +13,20 @@ class Post extends Model
 
     protected $fillable =['title', 'slug','body','category_id','image','status'];
 
-    // helper image
+    // helper image Backend
+    public function getAdminImage()
+    {
+
+        return asset('media/' . $this->image);
+
+    }
+
+    // helper image front
     public function getImage()
     {
         if (!$this->image) {
 
-            return asset('admin/dist/img/photo1.png');
+            return asset('media/photo1.png');
             
         }
 

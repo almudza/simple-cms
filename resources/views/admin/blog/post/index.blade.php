@@ -51,7 +51,7 @@
                         @endif
                       </td>
                       <td>
-                          <img src="{{ $post->getImage() }}" width="90" height="50"> 
+                          <img src="{{ $post->getAdminImage() }}" width="90" height="50"> 
                       </td>
                       <td>
                         @foreach ($post->tags as $postTag)

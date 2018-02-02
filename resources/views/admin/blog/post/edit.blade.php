@@ -19,6 +19,7 @@
 {{-- include Error Message --}}
 @include('admin.partials._error')
 
+
 <!-- form start -->
 <form role="form" action="{{ route('post.update',$post->id) }}" method="post" enctype="multipart/form-data">
   {{ csrf_field() }}
@@ -83,6 +84,14 @@
               <div class="col-md-6">
               <div class="form-group">
                 <label for="image">Image</label>
+                  <img src="{{ $post->getAdminImage() }}" width="100" alt="">
+                  <br><br>
+
+                  @if (isset($post->image))
+                    <a href="" class="btn btn-xs btn-danger" onclick="event.preventDefault();
+                          document.getElementById('remove-thumb').submit();" >Delete</a>
+                  @endif
+
                   <input type="file" name="image" id="image" accept="image/*">
 
                   
@@ -137,6 +146,13 @@
     </div>
       <!-- ./row -->
 </form>
+{{-- form delete thumb --}}
+<form action="{{ route('deletethumb',$post->id) }}" id="remove-thumb" method="post" style="display: none;">
+  {{ csrf_field() }}
+  {{ method_field('DELETE') }}
+</form>
+
+
 
 @endsection
 
