@@ -186,11 +186,13 @@ class PostController extends Controller
             ]);
         }
 
-        
+        // post dengan gambar
         $postImage = $post->image;
-        
+
+        // tmpung gmbr baru
         $image = $request->file('image');
 
+        // jika ada file request baru mk hapus yg lama
         if ($image) {
 
             // delete file
@@ -200,7 +202,7 @@ class PostController extends Controller
         }
 
 
-        
+        // inisialisasi slug
         $slug = $request->slug;
             
             // change uniq name
@@ -208,6 +210,8 @@ class PostController extends Controller
 
         // $image_new_name = time().$slug . $random . '.'. $image->getClientOriginalExtension();
        
+
+       // jika ada file baru simpan ke database dan storage
         if ($image) {
             
             $saveImage = $image->store('media');
@@ -273,6 +277,12 @@ class PostController extends Controller
         $post->tags()->detach();
 
         $post->forceDelete();
+
+        // jika punya gambar thumbnal mk hapus
+        if ($post->image) {
+            
+            Storage::delete($post->image);
+        }
 
 
         return redirect()->back();
