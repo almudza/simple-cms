@@ -8,7 +8,8 @@
 
 
 {{-- ckeditor --}}
-<script src="//cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script>
+  {{-- ckedior --}}
+  <script  type="text/javascript" src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
 
 @endsection
 
@@ -126,7 +127,7 @@
               <!-- /. tools -->
             </div>
             <!-- /.box-header -->
-            <div class="box-body pad">
+            <div >
                 <textarea id="editor1"  name="body"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"> {{ $post->body }} </textarea>
             </div>

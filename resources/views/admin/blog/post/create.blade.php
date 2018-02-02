@@ -6,10 +6,6 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('admin/bower_components/select2/dist/css/select2.min.css')}}">
 
-
-{{-- ckeditor --}}
-<script src="//cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script>
-
 @endsection
 
 
@@ -125,6 +121,10 @@
 
 {{-- Optional JavaScript --}}
 @section('javascript')
+  {{-- ckedior --}}
+  <script src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
+
+  {{-- select  --}}
 	<script src="{{ asset('admin/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
 
   <script>

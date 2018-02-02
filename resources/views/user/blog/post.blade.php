@@ -1,6 +1,12 @@
 @extends('user.main')
 
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('user/css/prism.css') }}">
+@endsection
+
+
+
 @section('title', $post->title)
 
 @section('content')
@@ -24,3 +30,11 @@
 
           <!-- endcontent -->
 @endsection
+
+
+
+@section('js')
+
+    <script src="{{ asset('user/js/prism.js') }}">
+    
+</script>

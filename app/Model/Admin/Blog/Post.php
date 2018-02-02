@@ -14,17 +14,15 @@ class Post extends Model
     protected $fillable =['title', 'slug','body','category_id','image','status'];
 
 
-
-    // get Image Gambar 
-    public function getImageAttribute($image)
+    public function getImage()
     {
-        if (!$image) {
+        if (!$this->image) {
+
+            return null;
             
-            return asset("media/devmus.png");
         }
 
-        return asset($image);
-
+        return asset($this->image);
     }
 
 

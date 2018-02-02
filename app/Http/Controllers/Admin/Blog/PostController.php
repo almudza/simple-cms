@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Blog;
 
 use Validator;
 use Session;
+use Storage;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\Blog\Category;
 use App\Model\Admin\Blog\Post;
@@ -90,18 +91,26 @@ class PostController extends Controller
             return redirect(route('post.create'))->withErrors($validator)->withInput();
         }
 
-        $image = $request->image;
+        $image = $request->file('image');
 
+        $slug = $request->slug;
+        
         // change uniq name
-        $image_new_name = time().$image->getClientOriginalName();
+        // $random = rand(1,9999);
 
-        // move to public
-        $image->move('media',$image_new_name);
+        // $image_new_name = time().$slug . $random . '.'. $image->getClientOriginalExtension();
+
+        // $saveImage = $image->storeAs('media', $image_new_name);
+        
+
+        $saveImage = $image->store('media');
+
+
 
         $post = Post::create([
             'title' => $request->title,
-            'slug' => $request->slug,
-            'image' => 'media/'. $image_new_name,
+            'slug' => $slug,
+            'image' => $saveImage,
             'status' => $request->status,
             'body' => $request->body,
             'category_id' => $request->category_id,
@@ -109,18 +118,6 @@ class PostController extends Controller
         ]); 
 
        $post->tags()->sync($request->tags);
-
-
-        /*$post = new Post;
-
-        $post->title = $request->title;
-        $post->slug = $request->slug;
-        $post->body = $request->title;
-        // $category_id = $request->category_id;
-        // $tag_id = $request->tag_id;
-        $post->save();
-       // $post->tags()->sync($request->tags);
-        // $post->categories()->sync($request->categories);*/
 
 
         return redirect()->route('post.index');
@@ -189,23 +186,44 @@ class PostController extends Controller
             ]);
         }
 
+        
+        $postImage = $post->image;
+        
+        $image = $request->file('image');
 
-        $post = Post::find($id);
+        if ($image) {
 
-        if ($request->hasFile('image')) {
+            // delete file
+            // dd($postImage);
             
-            $image = $request->image;
-
-            $image_new_name = time().$image->getClientOriginalName();
-
-            $image->move('media/', $image_new_name);
-
-            $post->image = 'media/' . $image_new_name;
+            Storage::delete($postImage);
         }
+
+
+        
+        $slug = $request->slug;
+            
+            // change uniq name
+        // $random = rand(1,9999);
+
+        // $image_new_name = time().$slug . $random . '.'. $image->getClientOriginalExtension();
+       
+        if ($image) {
+            
+            $saveImage = $image->store('media');
+            
+            $post->image = $saveImage;
+        
+        }
+
+
+        
+
 
         $post->title = $request->title;
 
-        $post->slug = $request->slug;
+
+        $post->slug = $slug;
         
         $post->body = $request->body;
 
