@@ -27,65 +27,64 @@ Route::get('/custom', function(){
 
 // middelware
 
-Route::group(['middelware'=> ['web']], function() {
 
-	/*Admin Route*/
-	Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
-
-
-		// Route Login Admin
-		Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.login');
-
-		// Route login post 
-		Route::post('login', 'Auth\LoginController@login');
+/*Admin Route*/
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middelware' => 'auth:admin'], function(){
 
 
-		/*Route Admin Dashboard*/
-		Route::get('/dashboard','DashboardController@index');
+	// Route Login Admin
+	Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.login');
 
-		/*Route Blog*/
-		Route::group(['namespace' => 'Blog','prefix' => 'blog'], function(){
-				
-			/*Post Prefix Route*/
-			Route::prefix('post')->group(function(){
+	// Route login post 
+	Route::post('login', 'Auth\LoginController@login');
 
+	// Logout Admin 
+	// Route::get('logout', 'Auth\LoginController@logout')->name('admin.logout');
 
-				// permanent delete
-				Route::get('/kill/{id}','PostController@kill')->name('post.kill');
-				// showTrash
-				Route::get('/show_trashed','PostController@showTrash')->name('post.showTrash');
-				// Restored trash
-				Route::get('/restore/{id}','PostController@restore')->name('post.restore');
-				// doftDelete
-				Route::get('/trash{id}', 'PostController@trash')->name('post.trash');
+	/*Route Admin Dashboard*/
+	Route::get('/dashboard','DashboardController@index');
 
-				// Update 
-				Route::post('/update/{id}', [
-					'uses' => 'PostController@update',
-					'as' => 'post.update'
-				]);
-
-
-				// edit 
-				Route::get('/edit/{id}','PostController@edit')->name('post.edit');
-				// delete thumbnail post 
-				Route::delete('/edit/{id}','PostController@deleteThumb')->name('deletethumb');
-
-				Route::post('/create','PostController@store')->name('post.store');
-				Route::get('/create', 'PostController@create')->name('post.create');
-				Route::get('/', 'PostController@index')->name('post.index');
-
+	/*Route Blog*/
+	Route::group(['namespace' => 'Blog','prefix' => 'blog'], function(){
 			
-			});
-
-			/*route Category*/
-			Route::resource('/category', 'CategoryController');
+		/*Post Prefix Route*/
+		Route::prefix('post')->group(function(){
 
 
-			/*Route Tag*/
-			Route::resource('/tag','TagController');
+			// permanent delete
+			Route::get('/kill/{id}','PostController@kill')->name('post.kill');
+			// showTrash
+			Route::get('/show_trashed','PostController@showTrash')->name('post.showTrash');
+			// Restored trash
+			Route::get('/restore/{id}','PostController@restore')->name('post.restore');
+			// doftDelete
+			Route::get('/trash{id}', 'PostController@trash')->name('post.trash');
 
+			// Update 
+			Route::post('/update/{id}', [
+				'uses' => 'PostController@update',
+				'as' => 'post.update'
+			]);
+
+
+			// edit 
+			Route::get('/edit/{id}','PostController@edit')->name('post.edit');
+			// delete thumbnail post 
+			Route::delete('/edit/{id}','PostController@deleteThumb')->name('deletethumb');
+
+			Route::post('/create','PostController@store')->name('post.store');
+			Route::get('/create', 'PostController@create')->name('post.create');
+			Route::get('/', 'PostController@index')->name('post.index');
+
+		
 		});
+
+		/*route Category*/
+		Route::resource('/category', 'CategoryController');
+
+
+		/*Route Tag*/
+		Route::resource('/tag','TagController');
 
 	});
 

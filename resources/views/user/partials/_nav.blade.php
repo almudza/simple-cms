@@ -30,25 +30,6 @@
               <form action="">
                 <input id="search-menu" type="text" placeholder="Search.." name="search">
               </form>
-       {{--          @if (Auth::guest())
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" >Join</a>
-                <div class="dropdown-menu">
-                  
-                  <a href="{{ route('login') }}" class="dropdown-item">Login</a>
-                  <a href="{{ route('register') }}" class="dropdown-item">Register</a>
-                @else
-                  <div class="dropdown-divider"></div>
-                  <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
-                  document.getElementById('logout-form').submit();" >Logout</a>
-                  <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                  </form>
-
-                </div>
-              </li>
-                @endif
- --}}
 
 
               <!-- Right Side Of Navbar -->
