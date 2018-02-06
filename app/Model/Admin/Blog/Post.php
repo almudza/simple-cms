@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Model\Admin\Blog;
+namespace Devmus\Model\Admin\Blog;
 
-use App\Model\Admin\Blog\Category;
+use Devmus\Model\Admin\Blog\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -46,7 +46,7 @@ class Post extends Model
     // tags 
     public function tags()
     {
-    	return $this->belongsToMany('App\Model\Admin\Blog\Tag','post_tags','post_id','tag_id')->withTimestamps();
+    	return $this->belongsToMany('Devmus\Model\Admin\Blog\Tag','post_tags','post_id','tag_id')->withTimestamps();
     }
 
 

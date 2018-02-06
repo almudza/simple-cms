@@ -1,5 +1,11 @@
 <?php
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
 /*Front End*/
 Route::namespace('User')->group(function(){
 
@@ -25,6 +31,13 @@ Route::group(['middelware'=> ['web']], function() {
 
 	/*Admin Route*/
 	Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
+
+
+		// Route Login Admin
+		Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.login');
+
+		// Route login post 
+		Route::post('login', 'Auth\LoginController@login');
 
 
 		/*Route Admin Dashboard*/
@@ -77,3 +90,4 @@ Route::group(['middelware'=> ['web']], function() {
 	});
 
 });
+

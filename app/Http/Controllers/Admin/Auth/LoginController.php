@@ -1,9 +1,12 @@
 <?php
 
-namespace Devmus\Http\Controllers\Auth;
+namespace Devmus\Http\Controllers\Admin\Auth;
 
 use Devmus\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {
@@ -32,6 +35,29 @@ class LoginController extends Controller
      *
      * @return void
      */
+
+
+    public function showLoginForm()
+    {
+        return view('admin.login');
+    }
+
+
+    public function login(Request $request)
+    {
+        $this->validateLogin($request);
+
+   
+
+        if ($this->attemptLogin($request)) {
+            return $this->sendLoginResponse($request);
+        }
+
+
+        return $this->sendFailedLoginResponse($request);
+    }
+
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

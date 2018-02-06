@@ -1,6 +1,6 @@
 <?php
 
-namespace Devmus\Http\Controllers\Auth;
+namespace Devmus\Http\Controllers\Admin\Auth;
 
 use Devmus\User;
 use Devmus\Http\Controllers\Controller;

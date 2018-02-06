@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\Admin\Blog;
+namespace Devmus\Model\Admin\Blog;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +10,6 @@ class Category extends Model
     //
    public function posts()
    {
-   		return $this->hasMany('App\Model\Admin\Blog\Post');
+   		return $this->hasMany('Devmus\Model\Admin\Blog\Post');
    }
 }

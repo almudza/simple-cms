@@ -1,6 +1,6 @@
 <?php
 
-namespace Devmus\Http\Controllers\Auth;
+namespace Devmus\Http\Controllers\Admin\Auth;
 
 use Devmus\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;

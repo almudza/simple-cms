@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Blog;
+namespace Devmus\Http\Controllers\Admin\Blog;
 
 use Validator;
 use Session;
 use Storage;
-use App\Http\Controllers\Controller;
-use App\Model\Admin\Blog\Category;
-use App\Model\Admin\Blog\Post;
-use App\Model\Admin\Blog\Tag;
+use Devmus\Http\Controllers\Controller;
+use Devmus\Model\Admin\Blog\Category;
+use Devmus\Model\Admin\Blog\Post;
+use Devmus\Model\Admin\Blog\Tag;
 use Illuminate\Http\Request;
 
 class PostController extends Controller

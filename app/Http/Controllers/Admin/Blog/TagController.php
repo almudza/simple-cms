@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Blog;
+namespace Devmus\Http\Controllers\Admin\Blog;
 
 use Session;
-use App\Http\Controllers\Controller;
-use App\Model\Admin\Blog\Tag;
+use Devmus\Http\Controllers\Controller;
+use Devmus\Model\Admin\Blog\Tag;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
