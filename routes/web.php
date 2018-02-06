@@ -41,6 +41,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middelware' => 'auth
 	// Logout Admin 
 	// Route::get('logout', 'Auth\LoginController@logout')->name('admin.logout');
 
+
+	// Users Admin manage
+	Route::resource('user', 'UserController');
+
+	// Role Route
+	Route::resource('role', 'RoleController');
+
 	/*Route Admin Dashboard*/
 	Route::get('/dashboard','DashboardController@index');
 
