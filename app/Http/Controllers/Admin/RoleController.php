@@ -3,11 +3,24 @@
 namespace Devmus\Http\Controllers\Admin;
 
 use Devmus\Http\Controllers\Controller;
+use Devmus\Model\Admin\Permission;
 use Devmus\Model\Admin\Role;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +40,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('admin.role.create');
+
+        $permissions = Permission::all();
+
+        return view('admin.role.create', compact('permissions'));
     }
 
     /**
@@ -47,6 +63,8 @@ class RoleController extends Controller
         $role->name = $request->name;
 
         $role->save();
+        
+        $role->permissions()->sync($request->permission);
 
         return redirect()->route('role.index');
     }
@@ -73,7 +91,9 @@ class RoleController extends Controller
     {
         $role = Role::find($id);
 
-        return view('admin.role.edit', compact('role'));
+        $permissions = Permission::all();
+
+        return view('admin.role.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -95,6 +115,8 @@ class RoleController extends Controller
         $role->name = $request->name;
 
         $role->save();
+
+        $role->permissions()->sync($request->permission);
 
         return redirect()->route('role.index');
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminRolesTable extends Migration
+class CreateAdminRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateAdminRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('admin_roles', function (Blueprint $table) {
+        Schema::create('admin_role', function (Blueprint $table) {
             $table->increments('id');
 
-            // table admin roles
+
             $table->integer('admin_id');
             $table->integer('role_id');
-/*
+            /*
             // set PK 
             $table->primary(['admin_id', 'role_id']);
 
@@ -39,6 +39,8 @@ class CreateAdminRolesTable extends Migration
                     ->onUpdate('cascade');
 
 */
+
+
             $table->timestamps();
         });
     }
@@ -50,6 +52,6 @@ class CreateAdminRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin_roles');
+        Schema::dropIfExists('admin_role');
     }
 }

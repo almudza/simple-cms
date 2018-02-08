@@ -25,10 +25,45 @@
 					                  <label for="name">Title</label>
 					                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter Role name" autocomplete="off">
 				                </div>
-				          {{--       <div class="form-group">
-				                  <label for="slug">Slug</label>
-				                  <input type="text" class="form-control" id="slug" name="slug" placeholder="slug">
-				                </div> --}}
+
+					<div class="col-md-4">
+						<label for="name">Role Permissions</label>
+						@foreach ($permissions as $permission)
+							@if ($permission->for == 'post' )
+								
+								<div class="checkbox">
+									<label><input type="checkbox" name="permission[]" value="{{ $permission->id }} "> {{ $permission->name }} </label>
+								</div>
+							@endif
+						@endforeach
+
+					</div>
+					<div class="col-md-4">
+						<label for="user">User Permissions</label>
+						@foreach ($permissions as $permission)
+							@if ($permission->for == 'user' )
+								
+								<div class="checkbox">
+									<label><input type="checkbox" name="permission[]" value="{{ $permission->id }} "> {{ $permission->name }} </label>
+								</div>
+							@endif
+						@endforeach
+
+					</div>
+
+					<div class="col-md-4">
+						<label for="user">User Permissions</label>
+						@foreach ($permissions as $permission)
+							@if ($permission->for == 'other' )
+								
+								<div class="checkbox">
+									<label><input type="checkbox" name="permission[]" value="{{ $permission->id }} "> {{ $permission->name }} </label>
+								</div>
+							@endif
+						@endforeach
+
+					</div>
+
 				          </div> <!-- box -->
 				          <div class="form-group">
 				          	<a href="{{ route('role.index') }}" class="btn btn-warning">Back</a>

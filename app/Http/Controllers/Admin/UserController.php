@@ -54,7 +54,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $this->validate($request, [
+
+            'name' => 'required|string|max:255',
+            
+            'email' => 'required|string|email|max:255|unique:admins',
+
+            'phone' => 'required|numeric|min:6|unique:admins',
+            
+            'password' => 'required|string|min:6|confirmed',
+
+            'status' => 'required'
+        ]);
+
+        $request['password'] = bcrypt($request->password);
+
+        $user = Admin::create($request->all());
+
+        $user->roles()->sync($request->role);
+
+        return redirect()->route('user.index')->with('message','User success created');
     }
 
     /**
@@ -76,7 +95,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $roles = Role::all();
+
+        $user = Admin::find($id);
+
+        return view('admin.user.edit',compact('user','roles'));
     }
 
     /**
@@ -88,7 +111,56 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // return $request->all();
+        $this->validate($request, [
+
+            'name' => 'required|string|max:255',
+            
+            'email' => 'required|string|email|max:255',
+
+            'phone' => 'required|numeric|min:6',
+
+        ]);
+
+        if ($request->password) {
+            
+          $request['password'] = bcrypt($request->password);
+        }
+
+
+
+        $user = Admin::find($id);
+
+
+        $user->name = $request->name;
+
+        $user->email = $request->email;
+
+        $user->phone = $request->phone;
+
+
+        if ($request->password) {
+            
+            $user->password = $request->password;
+        }
+
+
+        if (!$request->status) {
+
+            $user->status = 0;
+            
+        } else {
+            
+           $user->status = $request->status;
+        }
+
+
+        $user->save();
+
+        $user->roles()->sync($request->role);
+
+
+        return redirect()->route('user.index')->with('message','User updated successfully');
     }
 
     /**
@@ -99,6 +171,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Admin::where('id',$id)->delete();
+
+        return redirect()->back()->with('message','User is Deleted success');
     }
 }

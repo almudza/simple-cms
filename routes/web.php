@@ -48,6 +48,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middelware' => 'auth
 	// Role Route
 	Route::resource('role', 'RoleController');
 
+	// Permission Route
+	Route::resource('permission', 'PermissionController');
+
 	/*Route Admin Dashboard*/
 	Route::get('/dashboard','DashboardController@index');
 

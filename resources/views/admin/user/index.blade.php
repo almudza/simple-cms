@@ -1,4 +1,4 @@
-{{-- index Category --}}
+{{-- index user --}}
 @extends('admin.main')
 
 
@@ -12,7 +12,7 @@
 @section('content')
       <div class="row">
         <div class="col-xs-12">
-
+  @include('admin.partials._error')
           <div class="box">
             <div class="box-header text-center">
               <a href="{{ route('user.create') }}" class="label label-warning col-md-1">Create</a>
@@ -25,6 +25,8 @@
                 <tr>
                   <th>No.</th>
                   <th>Name</th>
+                  <th>Roles</th>
+                  <th>Status</th>
                   <th>Opsi</th>
                 </tr>
                 </thead>
@@ -37,12 +39,21 @@
                       <td>
                         {{ $user->name }}
                       </td>
+
                       <td>
-                        <form id="delete-form-{{ $user->id }}" method="post" action="{{ route('category.destroy',['id'=>$user->id]) }}">
+                        @foreach ($user->roles as $role)
+                           <span class="badge badge-primary"> {{ $role->name }} </span> 
+                          @endforeach  
+                      </td>
+
+                      <td>{{ $user->status ? 'Active' : 'Not Active' }} </td>
+                      
+                      <td>
+                        <form id="delete-form-{{ $user->id }}" method="post" action="{{ route('user.destroy',['id'=>$user->id]) }}">
                           {{ csrf_field() }}
                           {{ method_field('DELETE') }}
                         </form>
-                        <a href="{{ route('category.edit',$user->id) }}"><span class="label label-primary">Edit</span></a>| 
+                        <a href="{{ route('user.edit',$user->id) }}"><span class="label label-primary">Edit</span></a>| 
                        <a href="" onclick="
                        if (confirm('Are You Sure?..')) {
                         event.preventDefault();

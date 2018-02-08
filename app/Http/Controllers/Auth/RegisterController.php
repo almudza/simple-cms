@@ -2,10 +2,11 @@
 
 namespace Devmus\Http\Controllers\Auth;
 
-use Devmus\User;
 use Devmus\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
+use Devmus\Model\User\User;
+// use Devmus\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
