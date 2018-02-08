@@ -2,14 +2,15 @@
 
 namespace Devmus\Http\Controllers\Admin\Blog;
 
-use Validator;
-use Session;
-use Storage;
 use Devmus\Http\Controllers\Controller;
 use Devmus\Model\Admin\Blog\Category;
 use Devmus\Model\Admin\Blog\Post;
 use Devmus\Model\Admin\Blog\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Session;
+use Storage;
+use Validator;
 
 class PostController extends Controller
 {
@@ -50,22 +51,29 @@ class PostController extends Controller
      */
     public function create()
     {
-        $tags = Tag::all();
-        $categories = Category::all();
+        if (Auth::user()->can('posts.create')) {
 
-        // jika belum punya akan refirect ke category
+            $tags = Tag::all();
+            $categories = Category::all();
 
-        if ($categories->count() ==0 )
-        {
-            return redirect()->route('category.create');
-            
-        } else if ($tags->count() == 0) 
-        {
-            return redirect()->route('tag.create');
+            // jika belum punya akan refirect ke category
+
+            if ($categories->count() ==0 )
+            {
+                return redirect()->route('category.create');
+                
+            } else if ($tags->count() == 0) 
+            {
+                return redirect()->route('tag.create');
+            }
+
+            return view('admin.blog.post.create')->with('categories', $categories)
+            ->with('tags',$tags);
+                
         }
 
-        return view('admin.blog.post.create')->with('categories', $categories)
-        ->with('tags',$tags);
+        return redirect()->route('admin.dashboard');
+
     }
 
     /**

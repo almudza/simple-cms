@@ -25,6 +25,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // gates 
+
+        Gate::resource('posts', 'Devmus\Policies\PostPolicy');
+
+        Gate::define('posts.tag', 'Devmus\Policies\PostPolicy@tag');
+        
+        Gate::define('posts.category', 'Devmus\Policies\PostPolicy@category');
     }
 }

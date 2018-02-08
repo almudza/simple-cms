@@ -15,7 +15,11 @@
 
           <div class="box">
             <div class="box-header">
+              @can('posts.create', Auth::user())
+                  
               <a href="{{ route('post.create') }}" class="btn btn-warning">Create</a>
+
+              @endcan
               <h3 class="pull-center box-title">POST LIST</h3>
             </div>
             <!-- /.box-header -->
@@ -30,8 +34,15 @@
                   <th>Tags</th>
                   <th>Category</th>
                   <th>Created At</th>
-                  <th>Edit</th>
-                  <th>Trash</th>
+                  @can('posts.update', Auth::user())
+                      
+                    <th>Edit</th>
+                  @endcan
+
+                  @can('posts.delete', Auth::user())
+                      
+                    <th>Trash</th>
+                  @endcan
                 </tr>
                 </thead>
                 <tbody>
@@ -78,12 +89,17 @@
                         <p>{{ date('M j, Y h:ia', strtotime($post->created_at)) }}</p>
                         {{-- {{ $post->created_at }} --}}
                       </td>
+                      @can('posts.update', Auth::user())
                       <td>
                         <a href="{{ route('post.edit',$post->id) }}" class="fa fa-lg fa-edit"></a>
                       </td>
+                      @endcan
+
+                      @can('posts.delete', Auth::user())
                       <td>
                         <a href="{{ route('post.trash',$post->id) }}" class="fa fa-lg fa-trash"></a>
                       </td>
+                      @endcan
                     </tr>
                   @endforeach
                 </tbody>

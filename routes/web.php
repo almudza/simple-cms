@@ -41,6 +41,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middelware' => 'auth
 	// Logout Admin 
 	// Route::get('logout', 'Auth\LoginController@logout')->name('admin.logout');
 
+	/*Route Admin Dashboard*/
+	Route::get('/dashboard','DashboardController@index')->name('admin.dashboard');
 
 	// Users Admin manage
 	Route::resource('user', 'UserController');
@@ -51,8 +53,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middelware' => 'auth
 	// Permission Route
 	Route::resource('permission', 'PermissionController');
 
-	/*Route Admin Dashboard*/
-	Route::get('/dashboard','DashboardController@index');
 
 	/*Route Blog*/
 	Route::group(['namespace' => 'Blog','prefix' => 'blog'], function(){

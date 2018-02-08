@@ -47,10 +47,20 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{ route('post.index') }}"><i class="fa fa-circle-o"></i>List</a></li>
+
+                @can('posts.create', Auth::user())
                 <li><a href="{{ route('post.create') }}"><i class="fa fa-circle-o"></i>Create</a></li>
+                @endcan
+  
+                @can('posts.delete', Auth::user())
+                    
                 <li><a href="{{ route('post.showTrash') }}"><i class="fa fa-circle-o"></i>Trashed</a></li>
+                @endcan
               </ul>
             </li>
+
+            @can('posts.category', Auth::user())
+                
             <li class="treeview">
               <a href="#"><i class="fa fa-circle-o"></i> Category
                 <span class="pull-right-container">
@@ -62,6 +72,10 @@
                 <li><a href="{{ route('category.create') }}"><i class="fa fa-circle-o"></i>Create</a></li>
               </ul>
             </li>
+            @endcan
+
+            @can('posts.tag', Auth::user())
+
             <li class="treeview">
               <a href="#"><i class="fa fa-circle-o"></i> Tag
                 <span class="pull-right-container">
@@ -73,7 +87,12 @@
                 <li><a href="{{ route('tag.create') }}"><i class="fa fa-circle-o"></i>Create</a></li>
               </ul>
             </li>
+            @endcan
+
+            @can('posts.delete', Auth::user())
             <li><a href="{{ route('post.showTrash') }}"><i class="fa fa-circle-o"></i>Post Trash</a></li>
+            @endcan
+            
           </ul>
         </li>
         <li>
