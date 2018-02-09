@@ -15,7 +15,7 @@
                 <img src="{{ $post->getImage() }} " width="100%" alt="" class="card-img-top">
                 <div class="card-body">
                     <h3 class="text-center" > {{ $post->title }} </h3>
-                    <small>by <i class="fa fa-user"></i> <a href="#">Mudza</a> <b>{{ $post->created_at->diffForHumans() }}</b> </small>
+                    <small>by <i class="fa fa-user"></i> <a href="#">Mudza</a> <b>{{ $post->created_at }}</b> </small>
                     <small class="pull-right"><i class="fa fa-heart"></i> 3 Likes</small>
                     {{-- <p class="lead">A sort of importand subheading can go here.</p> --}}
                     <p>  {!! htmlspecialchars_decode($post->body) !!} </p>

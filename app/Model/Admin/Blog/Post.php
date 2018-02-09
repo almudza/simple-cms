@@ -2,7 +2,9 @@
 
 namespace Devmus\Model\Admin\Blog;
 
+use Carbon\Carbon;
 use Devmus\Model\Admin\Blog\Category;
+use Devmus\Model\User\Like;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -51,9 +53,25 @@ class Post extends Model
 
 
 
-    // view slug post detail
-  /*  public function getRouteKeyName()
+    // Accessor
+    public function getCreatedAtAttribute($value)
     {
-        return 'slug';
-    }*/
+        return Carbon::parse($value)->diffForHumans();
+    }
+
+
+    public function likes()
+    {
+
+        return $this->hasMany(Like::class);
+    }
+
+
+    // slug
+    public function getUrlAttribute($value)
+    {
+        return route('post',$value); //route name from web.php
+    }
+
+
 }

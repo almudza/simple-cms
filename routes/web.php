@@ -15,6 +15,12 @@ Route::namespace('User')->group(function(){
 	
 	Route::get('/{slug}', 'BlogController@post')->name('post');
 
+	// // Vue Router 
+	Route::post('getPosts','BlogController@getAllPosts');
+	
+	Route::post('saveLike','BlogController@saveLike');
+
+
 
 });
 
