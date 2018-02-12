@@ -31,7 +31,7 @@
 									<label for="for">Permisssion for</label>
 									<select name="for" id="for" class="form-control">
 										<option  selected disabled>Select Permission for</option>
-										<option value="{{ $permission->id }} "  >{{ $permission->name }} </option>
+										<option value="user"  >User</option>
 										<option value="post" >Post</option>
 										<option value="other" >Other</option>
 									</select>

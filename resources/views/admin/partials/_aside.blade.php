@@ -108,8 +108,14 @@
 
         <li class="header">LABELS</li>
         <li><a href="{{ route('user.index') }}"><i class="fa fa-user"></i> <span>Users</span></a></li>
+        @can('users.role', Auth::user())
         <li><a href="{{ route('role.index') }}"><i class="fa fa-circle-o text-red"></i> <span>Role</span></a></li>
+        @endcan
+        
+        @can('users.permission', Auth::user())
         <li><a href="{{ route('permission.index') }}"><i class="fa fa-circle-o text-yellow"></i> <span>Permission</span></a></li>
+        @endcan
+      
         <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
       </ul>
     </section>

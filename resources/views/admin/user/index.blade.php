@@ -15,7 +15,9 @@
   @include('admin.partials._error')
           <div class="box">
             <div class="box-header text-center">
+            @can('users.create', Auth::user())
               <a href="{{ route('user.create') }}" class="label label-warning col-md-1">Create</a>
+            @endcan
               <h3 class="box-title">User</h3>
             </div>
             <!-- /.box-header -->
@@ -49,18 +51,24 @@
                       <td>{{ $user->status ? 'Active' : 'Not Active' }} </td>
                       
                       <td>
-                        <form id="delete-form-{{ $user->id }}" method="post" action="{{ route('user.destroy',['id'=>$user->id]) }}">
-                          {{ csrf_field() }}
-                          {{ method_field('DELETE') }}
-                        </form>
-                        <a href="{{ route('user.edit',$user->id) }}"><span class="label label-primary">Edit</span></a>| 
-                       <a href="" onclick="
-                       if (confirm('Are You Sure?..')) {
-                        event.preventDefault();
-                        document.getElementById('delete-form-{{ $user->id }}').submit();
-                       } else {
-                        event.preventDefault();
-                       }"><span class="label label-danger">Delete</span></a></td>
+                        @can('users.update', Auth::user())
+                          <a href="{{ route('user.edit',$user->id) }}"><span class="label label-primary">Edit</span></a> 
+                        @endcan
+                        |
+                          @can('users.delete', Auth::user())
+                            <a href="" onclick="
+                            if (confirm('Are You Sure?..')) {
+                              event.preventDefault();
+                              document.getElementById('delete-form-{{ $user->id }}').submit();
+                            } else {
+                              event.preventDefault();
+                            }"><span class="label label-danger">Delete</span></a>
+                            <form id="delete-form-{{ $user->id }}" method="post" action="{{ route('user.destroy',['id'=>$user->id]) }}">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                              </form>
+                        @endcan
+                      </td>
                     </tr>
                   @endforeach
                 </tbody>

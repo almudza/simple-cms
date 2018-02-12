@@ -6,6 +6,7 @@ use Devmus\Http\Controllers\Controller;
 use Devmus\Model\Admin\Admin;
 use Devmus\Model\Admin\Role;
 use Illuminate\Http\Request;
+use Auth;
 
 class UserController extends Controller
 {
@@ -41,9 +42,13 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::all();
+        if (Auth::user()->can('users.create')) {
+            $roles = Role::all();
 
-        return view('admin.user.create', compact('roles'));
+            return view('admin.user.create', compact('roles'));
+        }
+
+        return redirect()->route('admin.dashboard');
     }
 
     /**
@@ -54,6 +59,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
 
             'name' => 'required|string|max:255',
@@ -74,6 +80,7 @@ class UserController extends Controller
         $user->roles()->sync($request->role);
 
         return redirect()->route('user.index')->with('message','User success created');
+                     
     }
 
     /**

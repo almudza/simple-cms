@@ -1,6 +1,11 @@
 <?php
 
 
+Route::get('/test', function() {
+	return Devmus\Model\User\Profile::find(1)->user;
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

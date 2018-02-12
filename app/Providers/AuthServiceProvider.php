@@ -29,6 +29,19 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::resource('posts', 'Devmus\Policies\PostPolicy');
 
+
+
+        // User
+        Gate::define('users.create', 'Devmus\Policies\PostPolicy@UserCreate');
+        Gate::define('users.update', 'Devmus\Policies\PostPolicy@UserUpdate');
+        Gate::define('users.delete', 'Devmus\Policies\PostPolicy@UserDelete');
+
+        // Role
+        Gate::define('users.role', 'Devmus\Policies\PostPolicy@role');
+        
+        // Permission
+        Gate::define('users.permission', 'Devmus\Policies\PostPolicy@permission');
+
         Gate::define('posts.tag', 'Devmus\Policies\PostPolicy@tag');
         
         Gate::define('posts.category', 'Devmus\Policies\PostPolicy@category');
