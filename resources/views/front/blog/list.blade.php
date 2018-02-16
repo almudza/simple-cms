@@ -8,9 +8,7 @@
 @section('title', ' | blog')
 
 @section('css')
-{{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
 
-  <meta name="csrf-token" content="{{ csrf_token() }}">
   
   <style>
     
@@ -59,6 +57,6 @@
 
 @section('js')
 
-<script src="{{ asset('js/app.js') }}"></script>
+{{-- <script src="{{ asset('js/app.js') }}"></script> --}}
  
 @endsection
