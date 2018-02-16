@@ -8,22 +8,30 @@ Route::get('/test', function() {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 
 /*Front End*/
 Route::namespace('User')->group(function(){
 
-	Route::get('/', 'HomeController@index');
+	Route::get('/', 'HomeController@index')->name('home');
+
+
+	// Profile
+	Route::get('/dashboard', 'ProfileController@index')->name('user.dashboard');
+	Route::post('/dashboard', 'ProfileController@update');
+	Route::delete('/dashboard', 'ProfileController@destroy');
+
+
+	// Blog
 
 	Route::get('/blog', 'BlogController@list')->name('blog');
 	
 	Route::get('/{slug}', 'BlogController@post')->name('post');
 
-	// // Vue Router 
-	Route::post('getPosts','BlogController@getAllPosts');
-	
-	Route::post('saveLike','BlogController@saveLike');
+	Route::get('/category/{category}', 'BlogController@category')->name('category');
+
+	Route::get('/tag/{tag}', 'BlogController@tag')->name('tag');
+
 
 
 

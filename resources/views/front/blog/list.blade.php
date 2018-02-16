@@ -1,8 +1,8 @@
 {{-- Blog List --}}
-@extends('user.main')
+@extends('front.main')
 
 @section('header')
-  @include('user.partials._header')
+  @include('front.partials._header')
 @endsection
 
 @section('title', ' | blog')
@@ -32,15 +32,18 @@
 
       @if ($posts->count() > 0)
 
-          <posts v-for='value in blog' 
-          :title=value.title
-          :created_at=value.created_at
-          :key=value.index
-          :post-id=value.id
-          login = "{{ Auth::check() }}"
-          :likes = value.likes.length
-          :slug = value.slug
-          ></posts>
+       @foreach ($posts as $post)
+
+            <div id="post-list">
+                <h3><a href="{{ route('post',$post->slug) }}"> {{ $post->title }}</a> </h3>
+                {{-- <p class="lead">A sort of importand subheading can go here.</p> --}}
+                <p>  </p>
+                <small class="pul-left"><span class="badge badge-success"> {{ $post->category->name }}</span> </small> <br>
+                  <small> {{ $post->created_at }} </small>
+                  <small class="pull-right"><i class="fa fa-heart"></i> {{ $post->admin->name }}</small>
+            </div>
+        @endforeach
+
 
       <br>
 <!-- paginate -->

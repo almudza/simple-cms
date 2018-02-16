@@ -1,7 +1,9 @@
     <section id="navbar">
-      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <div class="container">
-          <a href="/" class="navbar-brand">DEVMUS</a>
+          <a class="navbar-brand" href="#">
+            <img src="{{ asset('user/img/devmus.png') }}"  width="90" height="30" alt="">
+          </a>
           
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" >
             <span class="navbar-toggler-icon"></span>
@@ -9,12 +11,12 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a href="/" class="nav-link">Home</a>
+              <li class="nav-item">
+                <a href="/" class="nav-link active">Home</a>
               </li>
               <li class="nav-item dropdown">
-                <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">Android</a>
-                <div class="dropdown-menu">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Android</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a href="{{ url('/custom') }}" class="dropdown-item">Custom</a>
                   <a href="" class="dropdown-item">Root</a>
                 </div>
@@ -40,11 +42,15 @@
                             <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a href="" class="nav-link dropdown-toggle" id="name-profile" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                      <a href="{{ route('user.dashboard') }}" class="dropdown-item">Profile</a>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -64,4 +70,5 @@
           </div> 
         </div>
       </nav> 
+      
     </section>

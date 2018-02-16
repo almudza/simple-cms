@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	@include('user.partials._head')
+  	@include('front.partials._head')
     
   </head>
   <body>
     
     <!-- section navbar -->
-	@include('user.partials._nav')
+	@include('front.partials._nav')
     <!-- EndNavbar -->
     
     <!-- Jumbotron -->
@@ -30,7 +30,7 @@
           <!-- endcontent -->
 
           <!-- sidebar -->
-			@include('user.partials._sidebar')
+			@include('front.partials._sidebar')
           <!-- endsidebar -->
         </div>
       </section>
@@ -39,7 +39,7 @@
     <!-- container -->
 
     <section id="profil">
-	@include('user.partials._profile')
+	@include('front.partials._profile')
     </section>
 
     <!-- ScrollUP -->
@@ -56,7 +56,7 @@
 
     <!-- Optional JavaScript -->
 	{{-- include js   --}}
-	@include('user.partials._js')
+	@include('front.partials._js')
 
 
 

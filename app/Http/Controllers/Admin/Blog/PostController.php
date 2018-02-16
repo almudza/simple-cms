@@ -122,6 +122,7 @@ class PostController extends Controller
             'slug' => $slug,
             'image' => $saveImage,
             'status' => $request->status,
+            'admin_id' => $request->admin_id,
             'body' => $request->body,
             'category_id' => $request->category_id,
             
@@ -238,6 +239,8 @@ class PostController extends Controller
 
 
         $post->slug = $slug;
+
+        $post->admin_id = $request->admin_id;
         
         $post->body = $request->body;
 

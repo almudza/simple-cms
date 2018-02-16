@@ -2,7 +2,7 @@
     <script src="{{ asset('user/js/popper.min.js')}}"></script>
     <script src="{{ asset('user/js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('user/js/devmus.js')}}"></script>
-
+	<script src="{{ asset('admin/bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

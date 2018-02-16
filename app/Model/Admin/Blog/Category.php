@@ -10,6 +10,11 @@ class Category extends Model
     //
    public function posts()
    {
-   		return $this->hasMany('Devmus\Model\Admin\Blog\Post');
+   		return $this->hasMany('Devmus\Model\Admin\Blog\Post')->where('status',1)->orderBy('created_at', 'DESC')->paginate(5);
+   }
+
+   public function getRouteKeyName()
+   {
+   		return 'slug';
    }
 }

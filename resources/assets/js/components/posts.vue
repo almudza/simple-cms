@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div id="post-list">
         <h3><a :href="slug"> {{ title }}</a> </h3>
         
@@ -8,10 +8,10 @@
                 <i class="fa fa-heart" v-if='likeCount == 0' area-hidden="true"></i>
                 <i class="fa fa-heart" v-else='likeCount > 0' style="color:red" area-hidden="true"></i></a>
            
-          <!-- <small class="pull-right"><i class="fa fa-tag"></i> {{ category }} </small> -->
+          <small class="pull-right"><i class="fa fa-tag"></i> {{ category }} </small>
     </div>
-</template>
-
+</template> -->
+<!-- 
 <script>
     export default {
         data(){
@@ -61,3 +61,4 @@
         }
     }
 </script>
+ -->

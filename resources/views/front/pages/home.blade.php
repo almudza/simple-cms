@@ -1,7 +1,7 @@
-@extends('user.main')
+@extends('front.main')
 
 @section('header')
-@include('user.partials._header')
+@include('front.partials._header')
 @endsection
 
 

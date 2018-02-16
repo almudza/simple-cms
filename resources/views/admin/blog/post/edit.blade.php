@@ -82,6 +82,12 @@
               <!-- /.col -->
               <div class="col-md-6">
                 <div class="form-group">
+                  <label for="author">author : {{ auth::user()->name }} </label>
+                  <select name="admin_id" id="author">
+                    <option value="{{ auth::user()->id }}">{{ auth::user()->name }}</option>
+                  </select>
+                </div>
+                <div class="form-group">
                   <label for="image">Image</label>
 
                     <div class="parent">

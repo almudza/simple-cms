@@ -50,6 +50,14 @@ class PermissionsTableSeeder extends Seeder
             'name' => 'Tag-CRUD',
             'for' => 'other'
          ];
+        $p10 = [
+            'name' => 'Role-CRUD',
+            'for' => 'other'
+         ];
+        $p11 = [
+            'name' => 'Permission-CRUD',
+            'for' => 'other'
+         ];
 
          Permission::create($p1);
          Permission::create($p2);

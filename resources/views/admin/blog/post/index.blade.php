@@ -28,7 +28,8 @@
                 <thead>
                 <tr>
                   <th>No.</th>
-                  <th>Name</th>
+                  <th>Title</th>
+                  <th>Author</th>
                   <th>Status</th>
                   <th>Image</th>
                   <th>Tags</th>
@@ -53,6 +54,9 @@
                       </td>
                       <td>
                         {{ str_limit($post->title,12) }}
+                      </td>
+                      <td>
+                        {{ $post->admin_id }} | {{ $post->admin->name}}
                       </td>
                       <td>
                         @if ( $post->status == 1)

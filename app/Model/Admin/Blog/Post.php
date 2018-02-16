@@ -7,13 +7,14 @@ use Devmus\Model\Admin\Blog\Category;
 use Devmus\Model\User\Like;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Devmus\Model\Admin\Admin;
 
 class Post extends Model
 {
 	// softDelete
 	use SoftDeletes;
 
-    protected $fillable =['title', 'slug','body','category_id','image','status'];
+    protected $fillable =['title', 'slug','body','category_id','image','status','admin_id'];
 
     // helper image Backend
     public function getAdminImage()
@@ -51,6 +52,10 @@ class Post extends Model
     	return $this->belongsToMany('Devmus\Model\Admin\Blog\Tag','post_tags','post_id','tag_id')->withTimestamps();
     }
 
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class);
+    }
 
 
     // Accessor
@@ -59,19 +64,8 @@ class Post extends Model
         return Carbon::parse($value)->diffForHumans();
     }
 
+    
 
-    public function likes()
-    {
-
-        return $this->hasMany(Like::class);
-    }
-
-
-    // slug
-    public function getUrlAttribute($value)
-    {
-        return route('post',$value); //route name from web.php
-    }
 
 
 }

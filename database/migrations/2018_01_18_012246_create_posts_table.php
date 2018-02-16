@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->text('body');
             $table->boolean('status')->nullable();
-            $table->integer('posted_by')->nullable();
+            $table->integer('admin_id')->unsigned();
             $table->string('image')->nullable();
 
 

@@ -1,19 +1,37 @@
 #navbar {
   margin-bottom: 3.5rem; }
   #navbar .shadowNavbar {
-    box-shadow: 0px 5px 5px 0px grey; }
-  #navbar .nav-item.active {
-    background-color: #05af96; }
+    box-shadow: 0px 1px 1px 0px grey; }
+  #navbar .nav-link.active{
+      color: #05af96;
+    }
+  #navbar .nav-item{
+    margin-right: .5em;
+  }
+  /* #navbar .nav-link{
+    color:whitesmoke;
+  } */
   #navbar .nav-link:hover {
-    border: 1em;
-    background-color: #05af96; }
-  #navbar .dropdown-menu .dropdown-item {
+    color: #05af96;
+    /* border: 1em;
+    background-color: whitesmoke; */
+   }
+  /* #navbar .dropdown-menu .dropdown-item {
     text-decoration: none;
     display: block;
-    padding: 10px 16px;
-    color: black; }
-
+    color: black; } */
+  .navbar.fixed-top.navbar-expand-lg{
+      border-bottom: 1px solid rgb(228, 228, 228);
+    }
+  #name-profile{
+    padding: 1px 10px 1px 10px;
+    border: 1px solid #05af96;
+    border-radius: 1em;
+  }
 @media (max-width: 576px) {
+  input#search-menu{
+    margin-bottom: 2em;
+  }
   .jumbotron h1 {
     font-size: 28px; }
   .jumbotron p {
@@ -21,12 +39,12 @@
 
 input#search-menu {
   width: 200px;
-  height: 35px;
+  height: 40px;
   box-sizing: border-box;
-  border: 0px solid #ccc;
+  border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
-  background-color: white;
+  background-color: var(--light);
   background-image: url("../img/searchicon.png");
   background-position: 10px 10px;
   background-size: 15px;
