@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div class="col-md-6 mx-auto">
+  
 
 <form class="form-signin" method="POST" action="{{ route('login') }}">
      {{ csrf_field() }}
@@ -41,4 +43,5 @@
       <a class="btn btn-link" href="{{ route('password.request') }}">Forgot Your Password?</a>
       <p class="mt-5 mb-3 text-muted text-center">&copy; {{ Carbon\Carbon::now()->format('Y') }}  {{ config('app.name') }} </p>
 </form>
+</div>
 @endsection

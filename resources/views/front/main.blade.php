@@ -11,7 +11,7 @@
     <!-- EndNavbar -->
     
     <!-- Jumbotron -->
-    @yield('header')
+  {{--   @yield('header') --}}
 
     <!-- EndJumbotron -->
     

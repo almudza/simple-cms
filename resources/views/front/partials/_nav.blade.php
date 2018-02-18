@@ -1,7 +1,7 @@
     <section id="navbar">
       <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <div class="container">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="/">
             <img src="{{ asset('user/img/devmus.png') }}"  width="90" height="30" alt="">
           </a>
           
@@ -14,7 +14,7 @@
               <li class="nav-item">
                 <a href="/" class="nav-link active">Home</a>
               </li>
-              <li class="nav-item dropdown">
+{{--               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Android</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a href="{{ url('/custom') }}" class="dropdown-item">Custom</a>
@@ -26,7 +26,7 @@
               </li>
               <li class="nav-item">
                 <a href="" class="nav-link">Contact</a>
-              </li>
+              </li> --}}
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <form action="">

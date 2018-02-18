@@ -1,9 +1,9 @@
 <?php
 
 
-Route::get('/test', function() {
-	return Devmus\Model\User\Profile::find(1)->user;
-});
+// Route::get('/test', function() {
+// 	return Devmus\Model\User\Profile::find(1)->user;
+// });
 
 
 Auth::routes();
@@ -24,7 +24,7 @@ Route::namespace('User')->group(function(){
 
 	// Blog
 
-	Route::get('/blog', 'BlogController@list')->name('blog');
+	Route::get('/', 'BlogController@list')->name('blog');
 	
 	Route::get('/{slug}', 'BlogController@post')->name('post');
 

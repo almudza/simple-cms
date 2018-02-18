@@ -1,4 +1,4 @@
-@extends('front.main')
+@extends('front.layouts.appro')
 
 
 @section('css')
